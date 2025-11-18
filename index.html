@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <title>RentLocker – Smart delning av prylar i ditt bostadsområde</title>
+  <title>RentLocker – Allt ni behöver – på gården.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -15,6 +15,8 @@
       --card: #0b1020;
       --border: #1c2238;
       --radius: 18px;
+      --danger: #f97373;
+      --success: #4ade80;
     }
 
     * {
@@ -36,13 +38,24 @@
       padding: 24px 16px 64px;
     }
 
-    /* HEADER */
+    /* STICKY HEADER */
+    .header-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(to bottom, rgba(5,7,18,0.98), rgba(5,7,18,0.94), transparent);
+      backdrop-filter: blur(12px);
+    }
+
     header {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 8px 16px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(18, 25, 55, 0.8);
     }
 
     .logo-wrap {
@@ -71,14 +84,53 @@
       margin-top: -2px;
     }
 
-    .badge {
-      font-size: 0.8rem;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.86rem;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .nav-link:hover {
+      border-color: rgba(154,163,194,0.4);
+      color: var(--text);
+    }
+
+    .nav-cta {
+      font-size: 0.82rem;
       color: var(--accent);
       background: var(--accent-soft);
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid rgba(47, 125, 246, 0.4);
+      text-decoration: none;
       white-space: nowrap;
+    }
+
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+      }
+    }
+
+    .page-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 16px 64px;
     }
 
     /* HERO */
@@ -87,19 +139,11 @@
       grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.6fr);
       gap: 32px;
       align-items: center;
+      margin-top: 16px;
       margin-bottom: 40px;
     }
 
     @media (max-width: 880px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .badge {
-        align-self: flex-start;
-      }
-
       .hero {
         grid-template-columns: 1fr;
       }
@@ -160,7 +204,7 @@
       color: var(--muted);
     }
 
-    /* HERO CARD */
+    /* HERO BOX-MOCKUP */
     .hero-card {
       background: radial-gradient(circle at top, #1a2440 0, #0b0f1f 60%);
       border-radius: 20px;
@@ -170,3 +214,718 @@
     }
 
     .hero-card-tag {
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .hero-card-title {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-boxmock {
+      margin-top: 10px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #060814, #0d1530);
+      border: 1px solid rgba(59,80,130,0.9);
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 6px;
+    }
+
+    .hero-boxmock-cell {
+      height: 28px;
+      border-radius: 6px;
+      border: 1px solid rgba(88,112,180,0.7);
+      background: radial-gradient(circle at top, rgba(84,130,230,0.4), rgba(9,13,28,0.9));
+    }
+
+    .hero-boxmock-cell.large {
+      grid-column: span 2;
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .hero-chip {
+      background: rgba(4, 7, 18, 0.7);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .hero-chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    /* GENERELLA SEKTIONER */
+    .section {
+      margin-top: 40px;
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      max-width: 720px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 14px 14px 16px;
+    }
+
+    .card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 20, 40, 0.9);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    /* STYRELSE-CTA */
+    .styrelse-cta {
+      margin-top: 32px;
+      background: linear-gradient(135deg, rgba(47,125,246,0.12), rgba(11,15,31,0.95));
+      border-radius: 20px;
+      border: 1px solid rgba(47,125,246,0.45);
+      padding: 18px 18px 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.7fr) minmax(0, 2.3fr);
+      gap: 20px;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .styrelse-cta {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .styrelse-cta h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .styrelse-cta p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .styrelse-list {
+      list-style: none;
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .styrelse-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .styrelse-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      margin-top: 6px;
+      background: var(--accent);
+    }
+
+    .styrelse-side {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .styrelse-mark {
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+
+    /* PRIS */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 960px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pricing-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 18px 40px rgba(25, 70, 160, 0.55);
+      background: radial-gradient(circle at top, #1c2845 0, #0b1020 60%);
+    }
+
+    .pricing-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .pricing-price {
+      font-size: 1.4rem;
+      font-weight: 650;
+    }
+
+    .pricing-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .pricing-ul {
+      list-style: none;
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .pricing-ul li {
+      margin-bottom: 4px;
+    }
+
+    .pricing-chip {
+      font-size: 0.78rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(47,125,246,0.6);
+      color: var(--accent);
+      align-self: flex-start;
+      background: rgba(3,7,18,0.75);
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2.2fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 880px) {
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    details {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 10px 12px 10px;
+      font-size: 0.88rem;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary span {
+      font-weight: 550;
+    }
+
+    details p {
+      margin-top: 6px;
+      color: var(--muted);
+    }
+
+    /* KONTAKT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2.1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 880px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px 16px 18px;
+    }
+
+    .contact-card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .contact-desc {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #050814;
+      color: var(--text);
+      font-size: 0.86rem;
+      padding: 8px 9px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(47,125,246,0.4);
+    }
+
+    .contact-info-block {
+      font-size: 0.86rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-tag {
+      font-size: 0.78rem;
+      color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- STICKY HEADER -->
+  <div class="header-wrap">
+    <header>
+      <div class="logo-wrap">
+        <img src="logo.png" alt="RentLocker logotyp" class="logo-img" />
+        <div>
+          <div class="logo-text">RentLocker</div>
+          <div class="logo-sub">Allt ni behöver – på gården.</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#sa-fungerar" class="nav-link">Så fungerar det</a>
+        <a href="#for-styrelser" class="nav-link">För styrelser</a>
+        <a href="#pris" class="nav-link">Pris</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#kontakt" class="nav-cta">Intresseanmäl förening</a>
+      </nav>
+    </header>
+  </div>
+
+  <div class="page-inner">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>
+          Allt ni behöver – <span>på gården.</span>
+        </h1>
+        <p class="hero-text">
+          RentLocker är ett låst, snyggt skåp på gården med utvalda prylar som föreningen äger.
+          Boende bokar via appen och hämtar i boxen. Mindre privata inköp, mindre krångel, mer värde
+          i ert bostadsområde.
+        </p>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
+            Intresseanmäl er förening
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('sa-fungerar').scrollIntoView({behavior:'smooth'})">
+            Läs mer om upplägget →
+          </button>
+        </div>
+        <div class="hero-note">
+          ✔ Passar BRF, samfälligheter och hyresfastigheter<br />
+          ✔ Säsongsanpassade prylar – vinter, vår, sommar och höst
+        </div>
+      </div>
+
+      <!-- HERO CARD / BOX-VISUAL -->
+      <aside class="hero-card">
+        <div class="hero-card-tag">Exempel på box</div>
+        <div class="hero-card-title">En box. Allt ni delar på.</div>
+
+        <div class="hero-boxmock" aria-hidden="true">
+          <div class="hero-boxmock-cell"></div>
+          <div class="hero-boxmock-cell"></div>
+          <div class="hero-boxmock-cell"></div>
+          <div class="hero-boxmock-cell"></div>
+          <div class="hero-boxmock-cell large"></div>
+          <div class="hero-boxmock-cell"></div>
+          <div class="hero-boxmock-cell"></div>
+          <div class="hero-boxmock-cell large"></div>
+        </div>
+
+        <div class="hero-card-grid">
+          <div>
+            <div class="hero-chip"><span class="hero-chip-dot"></span> Snöskyfflar & isskrapor</div>
+            <div class="hero-chip"><span class="hero-chip-dot"></span> Högtryckstvätt</div>
+            <div class="hero-chip"><span class="hero-chip-dot"></span> Stege & verktyg</div>
+          </div>
+          <div>
+            <div class="hero-chip"><span class="hero-chip-dot"></span> Trädgårdsredskap</div>
+            <div class="hero-chip"><span class="hero-chip-dot"></span> Flyttlådor & vagnar</div>
+            <div class="hero-chip"><span class="hero-chip-dot"></span> Utelekar & sommar-kit</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SÅ FUNGERAR DET -->
+    <section class="section" id="sa-fungerar">
+      <h2>Så fungerar RentLocker</h2>
+      <p>
+        Vi hjälper er förening att välja rätt innehåll, installerar boxen och sköter drift, service och uppdateringar.
+        Medlemmarna bokar via appen och låser upp sitt fack med kod eller digital nyckel.
+      </p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>1. Box på gården</h3>
+          <p>Ett robust, väderskyddat skåp placeras på gården eller vid entrén. Designat för att smälta in i ert område.</p>
+        </div>
+        <div class="card">
+          <h3>2. Boende bokar</h3>
+          <p>Medlemmarna ser vad som finns ledigt, bokar i appen och får en unik kod som öppnar rätt fack.</p>
+        </div>
+        <div class="card">
+          <h3>3. Delning utan krångel</h3>
+          <p>Ni slipper nyckelhantering, utlåningslistor och konflikter. Vi tar hand om skötsel och uppdateringar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FÖR STYRELSER -->
+    <section class="section" id="for-styrelser">
+      <h2>För styrelser & förvaltare</h2>
+      <p>
+        RentLocker är framtaget för att göra det enkelt för styrelsen att erbjuda något konkret och uppskattat – 
+        utan att skapa mer arbete. Ett modernt komplement till tvättstuga, cykelförråd och gemensamhetslokal.
+      </p>
+
+      <div class="styrelse-cta">
+        <div>
+          <h3>En tjänst som stärker föreningens erbjudande.</h3>
+          <p>
+            Med RentLocker får ni en tydlig, praktisk medlemsnytta. Vi sköter installation, innehåll och drift – 
+            ni godkänner upplägget och kommunicerar till medlemmarna.
+          </p>
+          <ul class="styrelse-list">
+            <li>
+              <span class="styrelse-bullet"></span>
+              <span>Mindre slit och administration för styrelsen.</span>
+            </li>
+            <li>
+              <span class="styrelse-bullet"></span>
+              <span>Enkelt att lyfta i årsredovisning och objektsbeskrivningar.</span>
+            </li>
+            <li>
+              <span class="styrelse-bullet"></span>
+              <span>Ger föreningen en modern, hållbar profil.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="styrelse-side">
+          <div class="styrelse-mark">Pilot 2025</div>
+          <div>
+            <strong>Begränsat antal föreningar</strong><br />
+            Vi startar med ett mindre antal pilotföreningar för att optimera innehåll, funktion och ekonomi.
+          </div>
+          <div>
+            <strong>En kontaktväg</strong><br />
+            Ni får en ansvarig kontaktperson och uppföljning efter installation.
+          </div>
+          <div>
+            <strong>Intresserad?</strong><br />
+            Skicka en intresseanmälan nedan, så återkommer vi med ett förslag anpassat till just er förening.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIS -->
+    <section class="section" id="pris">
+      <h2>Pris & upplägg</h2>
+      <p>
+        Priset beror på storlek på föreningen, vilken boxmodell ni väljer och vilka prylar ni vill ha inkluderade.
+        Här är en översikt över typiska upplägg – exakta siffror tas fram efter dialog.
+      </p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-title">Liten förening</div>
+          <div class="pricing-price">från ca 1 500 kr/mån</div>
+          <div class="pricing-meta">Upp till ca 40 lägenheter</div>
+          <ul class="pricing-ul">
+            <li>Mind­re box, anpassad för färre hushåll.</li>
+            <li>Basutrustning året runt.</li>
+            <li>Support & enklare utbytesservice ingår.</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-chip">Rekommenderad</div>
+          <div class="pricing-title">Normal förening</div>
+          <div class="pricing-price">från ca 2 500–3 500 kr/mån</div>
+          <div class="pricing-meta">Ca 40–120 lägenheter</div>
+          <ul class="pricing-ul">
+            <li>Box med flera fack i olika storlekar.</li>
+            <li>Säsongsanpassat innehåll (vinter/sommar).</li>
+            <li>Service, uppdateringar & statistik.</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-title">Större område</div>
+          <div class="pricing-price">Offert</div>
+          <div class="pricing-meta">Flera fastigheter / områden</div>
+          <ul class="pricing-ul">
+            <li>Flera boxar, placerade strategiskt.</li>
+            <li>Skräddarsydd utrustningslista.</li>
+            <li>Samordnad service & rapportering.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <h2>Vanliga frågor</h2>
+      <p>
+        Här är svar på några av de vanligaste frågorna vi får från styrelser och boende.
+      </p>
+
+      <div class="faq-grid">
+        <div>
+          <details open>
+            <summary><span>Vem äger prylarna i boxen?</span></summary>
+            <p>
+              Föreningen äger prylarna, men vi hjälper er att välja rätt innehåll och kan föreslå utbyte vid behov.
+              I vissa upplägg kan vi även stå för delar av investeringen – det tar vi i dialog.
+            </p>
+          </details>
+          <details>
+            <summary><span>Vad händer om något går sönder?</span></summary>
+            <p>
+              Vi sätter en enkel policy tillsammans med er styrelse: vad som är normalt slitage och vad som räknas som skada.
+              RentLocker kan hantera service och utbyte enligt överenskommet avtal.
+            </p>
+          </details>
+          <details>
+            <summary><span>Hur bokar de boende prylar?</span></summary>
+            <p>
+              De boende loggar in i appen, ser vad som är ledigt och bokar. När tiden startar får de en kod som låser upp rätt fack.
+            </p>
+          </details>
+        </div>
+        <div>
+          <details>
+            <summary><span>Hur stor plats behöver boxen?</span></summary>
+            <p>
+              En vanlig box tar ungefär lika mycket plats som ett mindre cykelförråd eller sopskåp. Vi anpassar storlek efter ert behov.
+            </p>
+          </details>
+          <details>
+            <summary><span>Vad krävs av oss som förening?</span></summary>
+            <p>
+              En lämplig plats, ett eluttag och ett beslut från styrelsen. Resten – installation, uppstart och kommunikation – hjälper vi er med.
+            </p>
+          </details>
+          <details>
+            <summary><span>Kan vi testa i liten skala först?</span></summary>
+            <p>
+              Ja, vi erbjuder pilotupplägg där ni kan börja med en mindre box och utöka vid behov.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="section" id="kontakt">
+      <h2>Intresseanmäl er förening</h2>
+      <p>
+        Fyll i formuläret så återkommer vi med ett förslag för just er förening. Det är inte bindande – 
+        vi börjar alltid med en dialog.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Skicka en intresseanmälan</h3>
+          <p class="contact-desc">
+            Berätta kort om er förening, antal lägenheter och vad ni vill uppnå – t.ex. hållbarhet, 
+            medlemsnytta eller profilhöjning.
+          </p>
+          <form>
+            <div>
+              <label for="namn">Namn</label>
+              <input id="namn" type="text" placeholder="För- och efternamn" />
+            </div>
+            <div>
+              <label for="epost">E-post</label>
+              <input id="epost" type="email" placeholder="din@adress.se" />
+            </div>
+            <div>
+              <label for="forening">Förening / fastighet</label>
+              <input id="forening" type="text" placeholder="BRF Exempel 1" />
+            </div>
+            <div>
+              <label for="antal">Antal lägenheter (cirka)</label>
+              <input id="antal" type="number" min="1" placeholder="t.ex. 72" />
+            </div>
+            <div>
+              <label for="meddelande">Meddelande</label>
+              <textarea id="meddelande" placeholder="Beskriv kort vad ni är nyfikna på eller vilken utmaning ni vill lösa."></textarea>
+            </div>
+            <button type="button" class="btn-primary" onclick="window.location.href='mailto:info@rentlocker.se?subject=Intresseanmälan%20RentLocker&body=Hej%2C%0D%0A%0D%0AJag%20%C3%A4r%20intresserad%20av%20RentLocker%20f%C3%B6r%20v%C3%A5r%20f%C3%B6rening.%0D%0A%0D%0A'">
+              Skicka via e-post
+            </button>
+          </form>
+        </div>
+        <div class="contact-card">
+          <h3>Kontakt & nästa steg</h3>
+          <div class="contact-info-block">
+            <div class="contact-tag">Hur går det vidare?</div>
+            <div>
+              <strong>1. Kort avstämning</strong><br />
+              Vi bokar ett kort samtal eller digital träff med styrelsen för att förstå ert läge.
+            </div>
+            <div>
+              <strong>2. Förslag</strong><br />
+              Ni får ett konkret upplägg med förslag på boxstorlek, innehåll och kostnadsbild.
+            </div>
+            <div>
+              <strong>3. Beslut och tidsplan</strong><br />
+              Om ni vill gå vidare sätter vi en plan för installation och lansering till boende.
+            </div>
+            <div>
+              E-post: <a href="mailto:info@rentlocker.se">info@rentlocker.se</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>© <span id="year"></span> RentLocker</div>
+      <div>Byggt för moderna föreningar i Sverige</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
