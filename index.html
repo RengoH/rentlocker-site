@@ -2,8 +2,7 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <title>RentLocker – ALLT NI BEHÖVER
-    PÅ GÅRDEN</title>
+  <title>RentLocker – ALLT NI BEHÖVER - PÅ GÅRDEN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -80,6 +79,8 @@
       display: flex;
       align-items: center;
       gap: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-link {
@@ -118,6 +119,7 @@
       display: grid;
       grid-template-columns: 1.4fr 1fr;
       gap: 40px;
+      align-items: center;
     }
 
     h1 {
@@ -202,7 +204,7 @@
     .image-card img {
       display: block;
       width: 100%;
-      height: 290px; /* STÖRRE RUTA FÖR BILDEN */
+      height: 260px;
       object-fit: cover;
     }
 
@@ -251,7 +253,7 @@
       gap: 10px;
     }
 
-    /* RESPONSIVE */
+    /* TABLET / SMALLER LAPTOP */
     @media (max-width: 900px) {
       header {
         flex-direction: column;
@@ -259,19 +261,105 @@
       }
 
       nav {
-        flex-wrap: wrap;
+        justify-content: flex-start;
       }
 
       .hero {
         grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .hero-card {
+        max-width: 520px;
+      }
+
+      .image-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* MOBIL */
+    @media (max-width: 640px) {
+      header {
+        padding: 10px 14px;
+        gap: 12px;
+      }
+
+      .logo-wrap {
+        gap: 10px;
+      }
+
+      .logo-img {
+        height: 56px;
+      }
+
+      .logo-text {
+        font-size: 1.3rem;
+      }
+
+      .logo-sub {
+        font-size: 0.78rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .nav-link {
+        padding: 4px 8px;
+        font-size: 0.85rem;
+      }
+
+      .nav-cta {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+      }
+
+      .page-inner {
+        padding: 24px 14px 60px;
+      }
+
+      .hero {
+        margin-top: 10px;
+        gap: 20px;
+      }
+
+      h1 {
+        font-size: 2.1rem;
+      }
+
+      .hero-text {
+        font-size: 0.95rem;
+      }
+
+      .hero-card {
+        padding: 16px;
+      }
+
+      .section {
+        margin-top: 40px;
       }
 
       .image-grid {
         grid-template-columns: 1fr;
       }
 
+      .image-card img {
+        height: 220px;
+      }
+
       .why-grid {
         grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -286,7 +374,7 @@
         <img src="rentlocker2-logo.png" class="logo-img" alt="RentLocker logotyp">
         <div>
           <div class="logo-text">RentLocker</div>
-          <div class="logo-sub">ALLT NI BEHÖVER - PÅ GÅRDEN</div>
+          <div class="logo-sub">Allt ni behöver – på gården.</div>
         </div>
       </div>
 
@@ -306,7 +394,7 @@
     <!-- HERO -->
     <section class="hero">
       <div>
-        <h1>Allt ni behöver – <span>på gården.</span></h1>
+        <h1>ALLT NI BEHÖVER – <span>PÅ GÅRDEN</span></h1>
 
         <p class="hero-text">
           RentLocker är en smart föreningsbox med verktyg, säsongsutrustning och gemensamma prylar som boende enkelt lånar via appen. Mindre prylar i varje hem – mer nytta för hela området.
@@ -402,8 +490,8 @@
     <section class="section" id="kontakt">
       <h2>Kontakt & intresseanmälan</h2>
       <div class="card">
-        <p>📩 Maila oss: <a href="mailto:info@rentlocker.se">info@rentlocker.se</a></p>
-        <p>📞 Telefon: (lägg till nummer om du vill)</p>
+        <p>📩 Maila oss: <a href="mailto:rangebarhaji@live.se">info@rentlocker.se</a></p>
+        <p>📞 Telefon: (0728530003)</p>
         <p>Berätta kort om föreningen och vad ni vill uppnå – så återkommer vi med förslag.</p>
       </div>
     </section>
