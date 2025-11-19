@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <title>RentLocker – Smart delning av prylar i ditt bostadsområde</title>
+  <title>RentLocker – Allt ni behöver – på gården.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -15,6 +15,8 @@
       --card: #0b1020;
       --border: #1c2238;
       --radius: 18px;
+      --danger: #f97373;
+      --success: #4ade80;
     }
 
     * {
@@ -30,19 +32,23 @@
       color: var(--text);
     }
 
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 24px 16px 64px;
+    .header-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(to bottom, rgba(5,7,18,0.98), rgba(5,7,18,0.94), transparent);
+      backdrop-filter: blur(12px);
     }
 
-    /* HEADER */
     header {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 8px 16px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(18, 25, 55, 0.8);
     }
 
     .logo-wrap {
@@ -52,11 +58,10 @@
     }
 
     .logo-img {
-      height: 44px;
+      height: 52px;
       width: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 0 4px rgba(0,0,0,0.35));
     }
 
     .logo-text {
@@ -68,41 +73,51 @@
     .logo-sub {
       font-size: 0.78rem;
       color: var(--muted);
-      margin-top: -2px;
     }
 
-    .badge {
-      font-size: 0.8rem;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.86rem;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .nav-link:hover {
+      border-color: rgba(154,163,194,0.4);
+      color: var(--text);
+    }
+
+    .nav-cta {
+      font-size: 0.82rem;
       color: var(--accent);
       background: var(--accent-soft);
-      padding: 4px 12px;
+      padding: 6px 12px;
       border-radius: 999px;
       border: 1px solid rgba(47, 125, 246, 0.4);
-      white-space: nowrap;
+      text-decoration: none;
     }
 
-    /* HERO */
+    .page-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 16px 64px;
+    }
+
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.6fr);
       gap: 32px;
       align-items: center;
+      margin-top: 16px;
       margin-bottom: 40px;
-    }
-
-    @media (max-width: 880px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .badge {
-        align-self: flex-start;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-      }
     }
 
     h1 {
@@ -123,93 +138,23 @@
       max-width: 520px;
     }
 
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
     .btn-primary {
       background: var(--accent);
-      color: #ffffff;
+      color: white;
       border: none;
       padding: 10px 20px;
       border-radius: 999px;
       font-size: 0.95rem;
-      font-weight: 550;
       cursor: pointer;
-      box-shadow: 0 14px 30px rgba(47, 125, 246, 0.4);
     }
 
-    .btn-secondary {
-      background: transparent;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 0.9rem;
-      padding: 9px 16px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* HERO CARD */
     .hero-card {
-      background: radial-gradient(circle at top, #1a2440 0, #0b0f1f 60%);
-      border-radius: 20px;
-      padding: 18px 18px 20px;
+      background: var(--card);
+      border-radius: 18px;
+      padding: 16px;
       border: 1px solid var(--border);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
     }
 
-    .hero-card-tag {
-      font-size: 0.78rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 8px;
-    }
-
-    .hero-card-title {
-      font-size: 1.05rem;
-      margin-bottom: 10px;
-    }
-
-    .hero-card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .hero-chip {
-      background: rgba(4, 7, 18, 0.7);
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 0.78rem;
-      padding: 6px 10px;
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .hero-chip-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    /* SECTIONS */
     .section {
       margin-top: 40px;
     }
@@ -219,82 +164,26 @@
       margin-bottom: 10px;
     }
 
-    .section p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 16px;
-      max-width: 720px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    @media (max-width: 900px) {
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .card {
       background: var(--card);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 14px 14px 16px;
+      padding: 16px;
     }
 
-    .card h3 {
-      font-size: 0.98rem;
-      margin-bottom: 5px;
-    }
-
-    .card p {
-      font-size: 0.86rem;
-      color: var(--muted);
-      margin-bottom: 0;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 6px;
-    }
-
-    .pill {
-      font-size: 0.78rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(15, 20, 40, 0.9);
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-
-    /* FOOTER */
     footer {
       margin-top: 36px;
       padding-top: 16px;
       border-top: 1px solid var(--border);
-      font-size: 0.8rem;
       color: var(--muted);
+      font-size: 0.8rem;
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    
-    <!-- HEADER -->
+  <div class="header-wrap">
     <header>
       <div class="logo-wrap">
         <img src="rentlocker2-logo.png" alt="RentLocker logotyp" class="logo-img" />
@@ -303,122 +192,68 @@
           <div class="logo-sub">Allt ni behöver – på gården.</div>
         </div>
       </div>
-      <div class="badge">Pilot för bostadsrättsföreningar · 2025</div>
+
+      <nav>
+        <a class="nav-link" href="#sa-fungerar">Så fungerar det</a>
+        <a class="nav-link" href="#pris">Pris</a>
+        <a class="nav-cta" href="#kontakt">Intresseanmäl förening</a>
+      </nav>
     </header>
+  </div>
 
-    <main>
+  <div class="page-inner">
 
-      <!-- HERO -->
-      <section class="hero">
-        <div>
-          <h1>
-            Allt ni behöver – <span>på gården.</span>
-          </h1>
-          <p class="hero-text">
-            RentLocker är ett låst, snyggt skåp på gården med utvalda prylar som föreningen äger.
-            Boende bokar via appen och hämtar i boxen. Mindre privata inköp, mindre krångel, mer värde
-            i ert bostadsområde.
-          </p>
-          <div class="hero-cta">
-            <button class="btn-primary">Intresseanmäl er förening</button>
-            <button class="btn-secondary">Läs mer om upplägget →</button>
-          </div>
-          <div class="hero-note">
-            ✔ Passar BRF, samfälligheter och hyresfastigheter<br />
-            ✔ Säsongsanpassade prylar – vinter, vår, sommar och höst
-          </div>
-        </div>
+    <section class="hero">
+      <div>
+        <h1>Allt ni behöver – <span>på gården.</span></h1>
 
-        <!-- HERO CARD -->
-        <aside class="hero-card">
-          <div class="hero-card-tag">Exempel på innehåll</div>
-          <div class="hero-card-title">En box. Allt ni delar på.</div>
-          <div class="hero-card-grid">
-            <div>
-              <div class="hero-chip"><span class="hero-chip-dot"></span> Snöskyfflar</div>
-              <div class="hero-chip"><span class="hero-chip-dot"></span> Högtryckstvätt</div>
-              <div class="hero-chip"><span class="hero-chip-dot"></span> Stege & verktyg</div>
-            </div>
-            <div>
-              <div class="hero-chip"><span class="hero-chip-dot"></span> Trädgårdsredskap</div>
-              <div class="hero-chip"><span class="hero-chip-dot"></span> Flyttlådor & vagnar</div>
-              <div class="hero-chip"><span class="hero-chip-dot"></span> Utelekar & sommar-kit</div>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <!-- SECTION 1 -->
-      <section class="section">
-        <h2>Så fungerar RentLocker</h2>
-        <p>
-          Vi hjälper er förening att välja rätt innehåll, installerar boxen och sköter drift, service och uppdateringar.
-          Medlemmarna bokar via appen och låser upp sitt fack med kod eller digital nyckel.
+        <p class="hero-text">
+          RentLocker är en smart föreningsbox placerad på gården med utvalda verktyg, säsongsprodukter och gemensam utrustning. Boende bokar via appen och hämtar direkt i boxen.
         </p>
-        <div class="grid-3">
-          <div class="card">
-            <h3>1. Box på gården</h3>
-            <p>Ett robust, väderskyddat skåp placeras på gården eller vid entrén. Designat för att smälta in i ert område.</p>
-          </div>
-          <div class="card">
-            <h3>2. Boende bokar</h3>
-            <p>Medlemmarna ser vad som finns ledigt, bokar i appen och får en unik kod som öppnar rätt fack.</p>
-          </div>
-          <div class="card">
-            <h3>3. Delning utan krångel</h3>
-            <p>Ni slipper nyckelhantering, utlåningslistor och konflikter. Vi tar hand om skötsel och uppdateringar.</p>
-          </div>
-        </div>
-      </section>
 
-      <!-- SECTION 2 -->
-      <section class="section">
-        <h2>Varför för föreningar?</h2>
-        <p>
-          RentLocker gör det enkelt för styrelsen att erbjuda något konkret och uppskattat – utan extra administration.
-          Ett modernt komplement till tvättstuga, cykelförråd och gemensamhetslokal.
-        </p>
-        <div class="grid-3">
-          <div class="card">
-            <h3>Mindre prylar per hushåll</h3>
-            <p>Boende slipper köpa allt själva – ni delar på sådant som bara används ibland.</p>
-            <div class="pill-row">
-              <span class="pill">Mindre köp</span>
-              <span class="pill">Mindre förvaring hemma</span>
-            </div>
-          </div>
-          <div class="card">
-            <h3>Hållbart & smart</h3>
-            <p>Färre engångsköp och bättre utnyttjande av resurser. Bra för både ekonomi och miljö.</p>
-            <div class="pill-row">
-              <span class="pill">Delningsekonomi</span>
-              <span class="pill">Miljönytta</span>
-            </div>
-          </div>
-          <div class="card">
-            <h3>Ökat mervärde</h3>
-            <p>
-              Ett extra plus när lägenheter säljs – perfekt att lyfta i objektsbeskrivningar och
-              årsredovisningar.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Starkare profil</span>
-              <span class="pill">Attraktiv förening</span>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+        <button class="btn-primary">Intresseanmäl er förening</button>
+      </div>
 
-    <!-- FOOTER -->
+      <aside class="hero-card">
+        <h3>En box – allt ni delar</h3>
+        <p>Snöskyfflar, verktyg, trädgårdsredskap, sommar-kit m.m.</p>
+      </aside>
+    </section>
+
+    <section class="section" id="sa-fungerar">
+      <h2>Så fungerar det</h2>
+      <div class="card">
+        <p>1. Vi installerar boxen</p>
+        <p>2. Föreningen får en skräddarsydd utrustningslista</p>
+        <p>3. Boende bokar via appen</p>
+        <p>4. En unik kod öppnar rätt fack</p>
+      </div>
+    </section>
+
+    <section class="section" id="pris">
+      <h2>Pris & upplägg</h2>
+      <div class="card">
+        <p>Pris från 1500 kr/mån beroende på storlek och antal hushåll.</p>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt">
+      <h2>Kontakt & intresseanmälan</h2>
+      <div class="card">
+        <p>Maila oss: <a href="mailto:info@rentlocker.se">info@rentlocker.se</a></p>
+      </div>
+    </section>
+
     <footer>
       <div>© <span id="year"></span> RentLocker</div>
-      <div>Intresseanmälan & frågor: <a href="mailto:info@rentlocker.se">info@rentlocker.se</a></div>
+      <div>Byggt för moderna föreningar</div>
     </footer>
+
   </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
