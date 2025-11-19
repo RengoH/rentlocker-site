@@ -58,7 +58,7 @@
     }
 
     .logo-img {
-      height: 250px; /* ⬆️ STÖRRE LOGGA */
+      height: 250px;
       width: auto;
       object-fit: contain;
     }
@@ -160,7 +160,7 @@
       margin-bottom: 10px;
     }
 
-    /* SECTION */
+    /* GENERELLA SEKTIONER */
     .section {
       margin-top: 60px;
     }
@@ -170,6 +170,12 @@
       margin-bottom: 14px;
     }
 
+    .section p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -177,6 +183,61 @@
       border-radius: 18px;
     }
 
+    /* BILDSEKTION – BOXEN */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .image-card {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .image-card img {
+      display: block;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .image-card-caption {
+      padding: 10px 12px 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* VARFÖR RENTLOCKER */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .why-card {
+      background: var(--card);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 16px 16px 18px;
+    }
+
+    .why-card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .why-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    /* FOOTER */
     footer {
       margin-top: 40px;
       padding-top: 20px;
@@ -185,6 +246,32 @@
       display: flex;
       justify-content: space-between;
       font-size: 0.85rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -204,6 +291,8 @@
 
       <nav>
         <a class="nav-link" href="#sa-fungerar">Så fungerar det</a>
+        <a class="nav-link" href="#bilder">Våra boxar</a>
+        <a class="nav-link" href="#varfor">Varför RentLocker?</a>
         <a class="nav-link" href="#pris">Pris</a>
         <a class="nav-cta" href="#kontakt">Boka box</a>
       </nav>
@@ -219,7 +308,7 @@
         <h1>Allt ni behöver – <span>på gården.</span></h1>
 
         <p class="hero-text">
-          RentLocker är en smart föreningsbox med verktyg, säsongsutrustning och gemensamma prylar som boende enkelt lånar via appen.
+          RentLocker är en smart föreningsbox med verktyg, säsongsutrustning och gemensamma prylar som boende enkelt lånar via appen. Mindre prylar i varje hem – mer nytta för hela området.
         </p>
 
         <a href="#kontakt">
@@ -230,24 +319,76 @@
       <aside class="hero-card">
         <h3>En box – allt ni delar</h3>
         <p>
-          Snöslädar, trädgårdsredskap, handverktyg, städset, sommar-kit, pump, grilltillbehör och mer – alltid säsongsoptimerat.
+          Snöslädar, trädgårdsredskap, handverktyg, städset, pump, grilltillbehör och mer – alltid anpassat efter säsong och era behov.
         </p>
       </aside>
     </section>
 
-    <!-- HOW IT WORKS -->
+    <!-- SÅ FUNGERAR DET -->
     <section class="section" id="sa-fungerar">
-      <h2>Så fungerar det</h2>
+      <h2>Så fungerar RentLocker</h2>
       <div class="card">
-        <p>✔ Vi installerar boxen i ert område</p>
-        <p>✔ Ni får en skräddarsydd utrustningslista</p>
-        <p>✔ Boende lånar via appen</p>
-        <p>✔ Kod öppnar rätt fack i boxen</p>
-        <p>✔ Vi byter utrustning efter säsong</p>
+        <p>✔ Vi installerar boxen på gården eller vid entrén</p>
+        <p>✔ Ni väljer inriktning – t.ex. verktyg, trädgård, barnfamilj, vinter</p>
+        <p>✔ Boende lånar enkelt via appen och hämtar i boxen</p>
+        <p>✔ En unik kod öppnar rätt fack i boxen</p>
+        <p>✔ Vi uppdaterar innehållet efter säsong och användning</p>
       </div>
     </section>
 
-    <!-- PRICING -->
+    <!-- BILDSEKTION – VÅRA BOXAR -->
+    <section class="section" id="bilder">
+      <h2>Så kan RentLocker-boxen se ut</h2>
+      <p>
+        Här är exempelbilder på hur boxen kan placeras i ett bostadsområde – diskret men tydlig, nära tillgång för boende och anpassad efter er miljö.
+      </p>
+
+      <div class="image-grid">
+        <div class="image-card">
+          <img src="box-ute-1.jpg" alt="RentLocker-box placerad vid en innergård">
+          <div class="image-card-caption">Box placerad nära entré – lätt att nå på väg in och ut.</div>
+        </div>
+        <div class="image-card">
+          <img src="box-ute-2.jpg" alt="RentLocker-box intill cykelställ">
+          <div class="image-card-caption">Integrerad vid cykelställ eller soprum, utan att ta onödig plats.</div>
+        </div>
+        <div class="image-card">
+          <img src="box-ute-3.jpg" alt="RentLocker-box i grön gårdsmiljö">
+          <div class="image-card-caption">Diskret design som smälter in i gårdsmiljön men är enkel att hitta.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VARFÖR RENTLOCKER -->
+    <section class="section" id="varfor">
+      <h2>Varför RentLocker?</h2>
+      <p>
+        RentLocker är utvecklat för föreningar som vill erbjuda något konkret och modernt till sina boende – utan mer administration och krångel.
+      </p>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <h3>Mindre prylar i varje hem</h3>
+          <p>
+            Boende slipper köpa dyra saker som bara används ibland. Föreningen äger gemensamt – alla får tillgång när det behövs.
+          </p>
+        </div>
+        <div class="why-card">
+          <h3>Hållbart & smart</h3>
+          <p>
+            Färre engångsköp, mer delning. Ni minskar klimatavtryck och ökar nyttan av varje produkt ni investerar i.
+          </p>
+        </div>
+        <div class="why-card">
+          <h3>Starkare attraktivitet</h3>
+          <p>
+            En tydlig medlemsförmån som är enkel att visa upp i prospekt och årsredovisningar – och som boende faktiskt använder.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIS -->
     <section class="section" id="pris">
       <h2>Pris & upplägg</h2>
       <div class="card">
@@ -256,13 +397,13 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- KONTAKT -->
     <section class="section" id="kontakt">
       <h2>Kontakt & intresseanmälan</h2>
       <div class="card">
         <p>📩 Maila oss: <a href="mailto:info@rentlocker.se">info@rentlocker.se</a></p>
         <p>📞 Telefon: (lägg till nummer om du vill)</p>
-        <p>Vi hör av oss inom 24 timmar.</p>
+        <p>Berätta kort om föreningen och vad ni vill uppnå – så återkommer vi med förslag.</p>
       </div>
     </section>
 
@@ -273,9 +414,9 @@
 
   </div>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
