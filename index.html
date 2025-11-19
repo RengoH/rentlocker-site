@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <title>RentLocker – ALLT NI BEHÖVER - PÅ GÅRDEN</title>
+  <title>RentLocker – Allt ni behöver – på gården.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -58,7 +58,7 @@
     }
 
     .logo-img {
-      height: 250px;
+      height: 260px;
       width: auto;
       object-fit: contain;
     }
@@ -240,6 +240,26 @@
       margin-bottom: 0;
     }
 
+    /* SÄSONGSBILD – NY SEKTION */
+    .season-wrapper {
+      margin-top: 24px;
+    }
+
+    .season-image-frame {
+      background: radial-gradient(circle at top, rgba(47,125,246,0.16), rgba(3,7,18,0.95));
+      border-radius: 20px;
+      border: 1px solid rgba(47,125,246,0.45);
+      padding: 14px;
+    }
+
+    .season-image {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    }
+
     /* FOOTER */
     footer {
       margin-top: 40px;
@@ -357,6 +377,14 @@
         grid-template-columns: 1fr;
       }
 
+      .season-image-frame {
+        padding: 10px;
+      }
+
+      .season-image {
+        max-height: 280px;
+      }
+
       footer {
         flex-direction: column;
         align-items: flex-start;
@@ -394,7 +422,7 @@
     <!-- HERO -->
     <section class="hero">
       <div>
-        <h1>ALLT NI BEHÖVER – <span>PÅ GÅRDEN</span></h1>
+        <h1>Allt ni behöver – <span>på gården.</span></h1>
 
         <p class="hero-text">
           RentLocker är en smart föreningsbox med verktyg, säsongsutrustning och gemensamma prylar som boende enkelt lånar via appen. Mindre prylar i varje hem – mer nytta för hela området.
@@ -448,6 +476,20 @@
       </div>
     </section>
 
+    <!-- SÄSONGSUTRUSTNING – NY BILD -->
+    <section class="section" id="sason">
+      <h2>Exempel på säsongsutrustning</h2>
+      <p>
+        Ett urval av saker som faktiskt får plats i facken och som boende gärna lånar – från vinter till sommar.
+      </p>
+
+      <div class="season-wrapper">
+        <div class="season-image-frame">
+          <img src="season-tools.jpg" alt="Säsongsanpassade verktyg och utrustning" class="season-image">
+        </div>
+      </div>
+    </section>
+
     <!-- VARFÖR RENTLOCKER -->
     <section class="section" id="varfor">
       <h2>Varför RentLocker?</h2>
@@ -491,7 +533,7 @@
       <h2>Kontakt & intresseanmälan</h2>
       <div class="card">
         <p>📩 Maila oss: <a href="mailto:rangebarhaji@live.se">rangebarhaji@live.se</a></p>
-        <p>📞 Telefon: (0728530003)</p>
+        <p>📞 Telefon: 0728530003 </p>
         <p>Berätta kort om föreningen och vad ni vill uppnå – så återkommer vi med förslag.</p>
       </div>
     </section>
